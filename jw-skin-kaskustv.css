@@ -1,42 +1,74 @@
-.jwplayer {
-    width: 784px !important;
-}
-
-.jwplayer.jw-flag-aspect-mode.theatre {
-    width: 100% !important;
-    height: 534px !important;
-}
-
 .jwplayer .jw-controlbar {
     transition: transform 0.5s ease-out;
     visibility: visible !important;
     opacity: 1 !important;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,.54) 36%, rgba(0,0,0,.67) 60%, rgba(0,0,0,.8));
 }
 
 .jwplayer.jw-state-playing .jw-controlbar:not(.shift) {
-    transform: translateY(44px);
+    transform: translateY(48px);
 }
 
 .jwplayer .jw-slider-time {
+    height: 15px;
     transition: padding 0.5s ease-out;
 }
 
+.jwplayer .jw-slider-time.shift {
+    padding: 0 16px;
+}
+
 .jwplayer .jw-slider-time:not(.shift) {
-    padding: 0;
+    padding: 0 0;
+}
+
+.jwplayer .jw-button-container {
+    height: 48px;
+    padding: 12px 24px;
 }
 
 .jwplayer .jw-title {
-    background: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.44) 64%, transparent);
+    padding: 16px 16px 28px 16px;
+    background: linear-gradient(180deg, rgba(0,0,0,.8), rgba(0,0,0,.44) 64%, transparent);
     pointer-events: all;
 }
 
+.jwplayer .jw-title {
+    padding: 16px 16px 28px 16px;
+    background: linear-gradient(180deg, rgba(0,0,0,.8), rgba(0,0,0,.44) 64%, transparent);
+    pointer-events: all;
+}
+
+.jwplayer.jw-state-complete .jw-title {
+    display: none !important;
+}
+
 .jwplayer .jw-title.shift {
-    display: initial;
+    display: flex;
+}
+
+.jwplayer .jw-title:not(.shift) {
+    display: none;
+}
+
+.jwplayer .jw-title-primary {
+    flex: 1;
+    padding: 0;
+    font-size: 20px;
+}
+
+.jwplayer .jw-title-secondary {
+    display: none;
+}
+
+.jwplayer .kvp-settings-sharing {
+    height: 24px;
+    width: 24px;
 }
 
 .jwplayer .jw-icon-volume ~ .jw-horizontal-volume-container .jw-slider-horizontal {
     align-items: center;
-    height: 44px;
+    height: 48px;
     margin-right: 16px;
     transition-property: width, opacity;
     transition-duration: 0.5s;
@@ -49,7 +81,7 @@
 }
 
 .jwplayer .jw-icon-volume.jw-open ~ .jw-horizontal-volume-container .jw-slider-horizontal {
-    width: 64px;
+    width: 48px;
 }
 
 .jwplayer .jw-icon-volume .jw-overlay,
@@ -58,12 +90,6 @@
 .jwplayer .jw-settings-topbar,
 .jwplayer .jw-settings-item-active::before {
     display: none;
-}
-
-.jwplayer .kvp-settings-sharing {
-    position: absolute;
-    top: 0;
-    right: 0;
 }
 
 .jwplayer a {
