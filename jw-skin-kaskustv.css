@@ -3,173 +3,194 @@
     visibility: visible !important;
     opacity: 1 !important;
     background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,.54) 36%, rgba(0,0,0,.67) 60%, rgba(0,0,0,.8));
-}
-
-.jwplayer.jw-state-playing .jw-controlbar:not(.shift) {
+  }
+  
+  .jwplayer.jw-state-playing .jw-controlbar:not(.shift) {
     transform: translateY(48px);
-}
-
-.jwplayer .jw-slider-time {
+  }
+  
+  .jwplayer .jw-slider-time {
     height: 15px;
     transition: padding 0.5s ease-out;
-}
-
-.jwplayer .jw-slider-time.shift {
+  }
+  
+  .jwplayer .jw-slider-time.shift {
     padding: 0 16px;
-}
-
-.jwplayer .jw-slider-time:not(.shift) {
+  }
+  
+  .jwplayer .jw-slider-time:not(.shift) {
     padding: 0 0;
-}
-
-.jwplayer .jw-button-container {
+  }
+  
+  .jwplayer .jw-button-container {
     height: 48px;
     padding: 12px 24px;
-}
-
-.jwplayer .jw-title {
+  }
+  
+  .jwplayer .jw-title {
     padding: 16px 16px 28px 16px;
     background: linear-gradient(180deg, rgba(0,0,0,.8), rgba(0,0,0,.44) 64%, transparent);
     pointer-events: all;
-}
-
-.jwplayer .jw-title {
+  }
+  
+  .jwplayer .jw-title {
     padding: 16px 16px 28px 16px;
     background: linear-gradient(180deg, rgba(0,0,0,.8), rgba(0,0,0,.44) 64%, transparent);
     pointer-events: all;
-}
-
-.jwplayer.jw-state-complete .jw-title {
+  }
+  
+  .jwplayer.jw-state-complete .jw-title {
     display: none !important;
-}
-
-.jwplayer .jw-title.shift {
+  }
+  
+  .jwplayer .jw-title.shift {
     display: flex;
-}
-
-.jwplayer .jw-title:not(.shift) {
+  }
+  
+  .jwplayer .jw-title:not(.shift) {
     display: none;
-}
-
-.jwplayer .jw-title-primary {
+  }
+  
+  .jwplayer .jw-title-primary {
     flex: 1;
     padding: 0;
     font-size: 20px;
-}
-
-.jwplayer .jw-title-secondary {
+  }
+  
+  .jwplayer .jw-title-secondary {
     display: none;
-}
+  }
 
-.jwplayer .kvp-settings-sharing {
+  .jwplayer .jw-icon {
     height: 24px;
     width: 24px;
-}
+  }
 
-.jwplayer .jw-icon-volume ~ .jw-horizontal-volume-container .jw-slider-horizontal {
+  .jwplayer .jw-icon-volume {
+    margin-left: 16px;
+  }
+
+  .jwplayer .kvp-settings-theatre {
+    margin-right: 16px;
+  }
+
+  .jwplayer .jw-icon-settings {
+    margin-right: 16px;
+  }
+  
+  .jwplayer .jw-icon-volume ~ .jw-horizontal-volume-container .jw-slider-horizontal {
     align-items: center;
     height: 48px;
-    margin-right: 16px;
     transition-property: width, opacity;
     transition-duration: 0.5s;
     transition-timing-function: ease-out;
-}
-
-.jwplayer .jw-icon-volume:not(.jw-open) ~ .jw-horizontal-volume-container .jw-slider-horizontal {
+  }
+  
+  .jwplayer .jw-icon-volume:not(.jw-open) ~ .jw-horizontal-volume-container .jw-slider-horizontal {
     opacity: 0;
     width: 0px;
-}
-
-.jwplayer .jw-icon-volume.jw-open ~ .jw-horizontal-volume-container .jw-slider-horizontal {
+  }
+  
+  .jwplayer .jw-icon-volume.jw-open ~ .jw-horizontal-volume-container .jw-slider-horizontal {
     width: 48px;
-}
-
-.jwplayer .jw-icon-volume .jw-overlay,
-.jwplayer .jw-knob,
-.jwplayer .jw-icon-rewind,
-.jwplayer .jw-settings-topbar,
-.jwplayer .jw-settings-item-active::before {
+  }
+  
+  .jwplayer .jw-icon-volume .jw-overlay,
+  .jwplayer .jw-knob,
+  .jwplayer .jw-icon-rewind,
+  .jwplayer .jw-settings-topbar,
+  .jwplayer .jw-settings-item-active::before {
     display: none;
-}
+  }
+  
+  .jwplayer .jw-text-elapsed {
+    margin-left: 16px;
+  }
 
-.jwplayer a {
+  .jwplayer .jw-tooltip-time,
+  .jwplayer .kvp-tooltip-time-progress {
+    width: auto;
+    height: auto;
+  }
+  
+  .jwplayer a {
     color: inherit;
     text-decoration: inherit;
-}
-
-.jwplayer a:hover {
+  }
+  
+  .jwplayer a:hover {
     color: #ced4da;
-}
-
-.jwplayer .jw-slider-time {
+  }
+  
+  .jwplayer .jw-slider-time {
     align-items: flex-end;
-}
-
-.jwplayer .jw-slider-time.jw-slider-horizontal .jw-rail,
-.jwplayer .jw-slider-time.jw-slider-horizontal .jw-buffer,
-.jwplayer .jw-slider-time.jw-slider-horizontal .jw-progress {
+  }
+  
+  .jwplayer .jw-slider-time.jw-slider-horizontal .jw-rail,
+  .jwplayer .jw-slider-time.jw-slider-horizontal .jw-buffer,
+  .jwplayer .jw-slider-time.jw-slider-horizontal .jw-progress {
     transform: none;
     top: initial;
     bottom: 0;
     height: 100%;
     transition: height 150ms ease-in-out;
-}
-
-.jwplayer .jw-slider-time.jw-slider-horizontal:hover .jw-rail,
-.jwplayer .jw-slider-time.jw-slider-horizontal:hover .jw-buffer,
-.jwplayer .jw-slider-time.jw-slider-horizontal:hover .jw-progress {
+  }
+  
+  .jwplayer .jw-slider-time.jw-slider-horizontal:hover .jw-rail,
+  .jwplayer .jw-slider-time.jw-slider-horizontal:hover .jw-buffer,
+  .jwplayer .jw-slider-time.jw-slider-horizontal:hover .jw-progress {
     transform: none;
     height: 300%;
-}
-
-.jwplayer .jw-slider-time.jw-slider-horizontal .jw-rail {
+  }
+  
+  .jwplayer .jw-slider-time.jw-slider-horizontal .jw-rail {
     background: rgba(115,133,159,.5);
-}
-
-.jwplayer .jw-slider-time.jw-slider-horizontal .jw-buffer {
+  }
+  
+  .jwplayer .jw-slider-time.jw-slider-horizontal .jw-buffer {
     background: rgba(115,133,159,.75);
-}
-
-.jwplayer .jw-slider-time.jw-slider-horizontal .jw-progress {
+  }
+  
+  .jwplayer .jw-slider-time.jw-slider-horizontal .jw-progress {
     background: white;
-}
-
-.jwplayer .jw-settings-menu {
+  }
+  
+  .jwplayer .jw-settings-menu {
     width: 120px !important;
     height: 187px !important;
     transform: translate(-8px, 24px);
     z-index: 2;
-}
-
-.jwplayer .jw-settings-submenu {
+  }
+  
+  .jwplayer .jw-settings-submenu {
     padding: 11px 0px;
     background: #191919;
-}
-
-.jwplayer .jw-settings-content-item {
+  }
+  
+  .jwplayer .jw-settings-content-item {
     padding: 7px 16px;
     text-align: right;
     color: rgb(255, 255, 255);
     font-size: 14px;
-}
-
-.jwplayer .kvp-settings-theatre svg .theatre-mode {
+  }
+  
+  .jwplayer .kvp-settings-theatre svg .theatre-mode {
     display: block;
-}
-
-.jwplayer .kvp-settings-theatre svg .normal-mode {
+  }
+  
+  .jwplayer .kvp-settings-theatre svg .normal-mode {
     display: none;
-}
-
-.jwplayer.theatre .kvp-settings-theatre svg .theatre-mode {
+  }
+  
+  .jwplayer.theatre .kvp-settings-theatre svg .theatre-mode {
     display: none;
-}
-
-.jwplayer.theatre .kvp-settings-theatre svg .normal-mode {
+  }
+  
+  .jwplayer.theatre .kvp-settings-theatre svg .normal-mode {
     display: block;
-}
-
-.jwplayer .kvp-tooltip-time-progress {
+  }
+  
+  .jwplayer .kvp-tooltip-time-progress {
     height: auto;
     width: 0;
     bottom: 100%;
@@ -180,4 +201,4 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-}
+  }
