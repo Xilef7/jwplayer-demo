@@ -1,11 +1,11 @@
 function addAnimationOnHover(player) {
-    var playerContainer = player.getContainer();
+    const playerContainer = player.getContainer();
 
-    var controlbar = playerContainer.querySelector('.jw-controlbar');
-    var timeSlider = playerContainer.querySelector('.jw-slider-time');
-    var title = playerContainer.querySelector('.jw-title');
+    const controlbar = playerContainer.querySelector('.jw-controlbar');
+    const timeSlider = playerContainer.querySelector('.jw-slider-time');
+    const title = playerContainer.querySelector('.jw-title');
 
-    var animatedItems = [controlbar, timeSlider, title];
+    const animatedItems = [controlbar, timeSlider, title];
 
     playerContainer.addEventListener('mouseenter', function () {
         animatedItems.forEach(function (element) {
@@ -21,40 +21,45 @@ function addAnimationOnHover(player) {
 }
 
 function addTheatreButton(player) {
-    var playerContainer = player.getContainer();
+    const playerContainer = player.getContainer();
 
-    var theatreIcon = 
-        '<svg xmlns="http://www.w3.org/2000/svg" class="jw-svg-icon jw-svg-icon-sharing" viewBox="0 0 240 240" focusable="false">' +
-            '<path class="normal-mode" d="M113.2,131.078a21.589,21.589,0,0,0-17.7-10.6,21.589,21.589,0,0,0-17.7,10.6,44.769,44.769,0,0,0,0,46.3,21.589,21.589,0,0,0,17.7,10.6,21.589,21.589,0,0,0,17.7-10.6,44.769,44.769,0,0,0,0-46.3Zm-17.7,47.2c-7.8,0-14.4-11-14.4-24.1s6.6-24.1,14.4-24.1,14.4,11,14.4,24.1S103.4,178.278,95.5,178.278Zm-43.4,9.7v-51l-4.8,4.8-6.8-6.8,13-13a4.8,4.8,0,0,1,8.2,3.4v62.7l-9.6-.1Zm162-130.2v125.3a4.867,4.867,0,0,1-4.8,4.8H146.6v-19.3h48.2v-96.4H79.1v19.3c0,5.3-3.6,7.2-8,4.3l-41.8-27.9a6.013,6.013,0,0,1-2.7-8,5.887,5.887,0,0,1,2.7-2.7l41.8-27.9c4.4-2.9,8-1,8,4.3v19.3H209.2A4.974,4.974,0,0,1,214.1,57.778Z"></path>' +
-            '<path class="theatre-mode" d="M175,160c-6.9,0.2-13.6,2.6-19,7l-62-39c0.8-2.6,1.2-5.3,1-8c0.2-2.7-0.2-5.4-1-8l62-39c5.4,4.4,12.1,6.8,19,7c16.3,0.3,29.7-12.6,30-28.9c0-0.4,0-0.7,0-1.1c0-16.5-13.5-30-30-30s-30,13.5-30,30c-0.2,2.7,0.2,5.4,1,8L84,97c-5.4-4.4-12.1-6.8-19-7c-16.5,0-30,13.5-30,30s13.5,30,30,30c6.9-0.2,13.6-2.6,19-7l62,39c-0.8,2.6-1.2,5.3-1,8c0,16.5,13.5,30,30,30s30-13.5,30-30S191.6,160,175,160z"></path>' +
-        '</svg>';
+    const theatreIcon = '<svg xmlns="http://www.w3.org/2000/svg" class="jw-svg-icon kvp-svg-icon-theatre-on" focusable="false"><path></path></svg>';
+    
     player.addButton(theatreIcon, 'Theatre', () => {
-        var playerClassList = playerContainer.classList;
+        const playerClassList = playerContainer.classList;
+        const tooltipText = playerContainer.querySelector('.jw-tooltip-theatre div');
+
         if (playerClassList.contains('theatre')) {
+            tooltipText.textContent = 'Theatre';
             playerClassList.remove('theatre');
         } else {
+            tooltipText.textContent = 'Exit Theatre';
             playerClassList.add('theatre');
         }
-    }, 'settings-theatre', 'kvp-settings-theatre');
+    }, 'theatre', 'kvp-icon-theatre');
+
+    const offTheatreIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    offTheatreIcon.classList = 'jw-svg-icon kvp-svg-icon-theatre-off';
+    offTheatreIcon.setAttribute('focusable', 'false');
+    offTheatreIcon.innerHTML = '<path></path>'
+
+    document.querySelector('.kvp-icon-theatre').appendChild(offTheatreIcon);
 }
 
 function addShareButton(player) {
-    var playerContainer = player.getContainer();
-    var title = playerContainer.querySelector('.jw-title');
+    const playerContainer = player.getContainer();
+    const title = playerContainer.querySelector('.jw-title');
 
-    var shareIcon = 
-        '<svg xmlns="http://www.w3.org/2000/svg" class="jw-svg-icon jw-svg-icon-sharing" viewBox="0 0 240 240" focusable="false">' +
-        '<path d="M175,160c-6.9,0.2-13.6,2.6-19,7l-62-39c0.8-2.6,1.2-5.3,1-8c0.2-2.7-0.2-5.4-1-8l62-39c5.4,4.4,12.1,6.8,19,7c16.3,0.3,29.7-12.6,30-28.9c0-0.4,0-0.7,0-1.1c0-16.5-13.5-30-30-30s-30,13.5-30,30c-0.2,2.7,0.2,5.4,1,8L84,97c-5.4-4.4-12.1-6.8-19-7c-16.5,0-30,13.5-30,30s13.5,30,30,30c6.9-0.2,13.6-2.6,19-7l62,39c-0.8,2.6-1.2,5.3-1,8c0,16.5,13.5,30,30,30s30-13.5,30-30S191.6,160,175,160z"></path>' +
-        '</svg>';
-    player.addButton(shareIcon, 'Share', () => alert('Share'), 'settings-sharing', 'kvp-settings-sharing');
+    const shareIcon = '<svg xmlns="http://www.w3.org/2000/svg" class="jw-svg-icon kvp-svg-icon-sharing" focusable="false"><path></path></svg>';
+    player.addButton(shareIcon, 'Share', () => alert('Share'), 'sharing', 'kvp-sharing');
 
-    title.appendChild(playerContainer.querySelector('.kvp-settings-sharing'));
+    title.appendChild(playerContainer.querySelector('.kvp-sharing'));
 }
 
 function wrapTitleInAnchor(player) {
-    var primaryTitle = player.getContainer().querySelector('.jw-title-primary');
+    const primaryTitle = player.getContainer().querySelector('.jw-title-primary');
 
-    var primaryTitleAnchor = document.createElement('a');
+    const primaryTitleAnchor = document.createElement('a');
     primaryTitleAnchor.innerHTML = primaryTitle.innerHTML;
     primaryTitleAnchor.href = '//localhost/jwplayer';
 
@@ -63,49 +68,79 @@ function wrapTitleInAnchor(player) {
 }
 
 function addProgressTimeTooltip(player) {
-    var playerContainer = player.getContainer();
+    const playerContainer = player.getContainer();
 
-    var newTooltip = document.createElement('div');
+    const newTooltip = document.createElement('div');
     newTooltip.className = 'jw-icon jw-icon-tooltip kvp-tooltip-time-progress jw-button-color jw-reset';
     playerContainer.querySelector('.jw-slider-container').appendChild(newTooltip);
 
-    var newOverlay = document.createElement('div');
+    const newOverlay = document.createElement('div');
     newOverlay.className = 'jw-overlay jw-reset';
     newTooltip.appendChild(newOverlay);
 
-    var newTipTime = document.createElement('div');
+    const newTipTime = document.createElement('div');
     newTipTime.className = 'jw-time-tip jw-reset';
     newOverlay.appendChild(newTipTime);
 
-    var newText = document.createElement('span');
+    const newText = document.createElement('span');
     newText.className = 'jw-text jw-reset';
     newTipTime.appendChild(newText);
 
-    var timeSlider = playerContainer.querySelector('.jw-slider-time');
+    const timeSlider = playerContainer.querySelector('.jw-slider-time');
 
     timeSlider.addEventListener('mouseenter', () => newTooltip.classList.add('jw-open'));
 
     timeSlider.addEventListener('mouseleave', () => newTooltip.classList.remove('jw-open'));
 
     player.on('time', e => {
-        var duration = e.duration;
-        var position = e.position;
+        const duration = e.duration;
+        const position = e.position;
 
         newTooltip.style.left = (position / duration * 100) + '%';
 
-        var minutes = Math.floor(position / 60);
-        var seconds = Math.floor(position % 60);
+        const minutes = Math.floor(position / 60);
+        const seconds = Math.floor(position % 60);
 
         newText.textContent = minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
     });
 }
 
+function moveSettingsMenu(player) {
+    const playerContainer = player.getContainer();
+
+    const settingsIcon = playerContainer.querySelector('.jw-icon-settings');
+    const menuSettings = playerContainer.querySelector('.jw-settings-menu');
+
+    settingsIcon.appendChild(menuSettings);
+}
+
+function changeIcon(player, svgSelectors, viewBox, d) {
+    player.getContainer().querySelectorAll(svgSelectors).forEach(svg => {
+        svg.setAttribute('viewBox', viewBox);
+        svg.innerHTML = `<path d="${d}"></path>`;
+    });
+}
+
 jwplayer().on('ready', function () {
-    var player = jwplayer();
+    const player = jwplayer();
 
     addAnimationOnHover(player);
     addTheatreButton(player);
     addShareButton(player);
     wrapTitleInAnchor(player);
     addProgressTimeTooltip(player);
+    moveSettingsMenu(player);
+
+    changeIcon(player, '.jw-svg-icon-play', '0 0 1024 1024', "M827.733 513.877l-554.539 327.808c-45.056 26.624-114.048 0.811-114.048-65.024v-655.531c0-59.093 64.128-94.72 114.048-65.067l554.539 327.68c49.493 29.141 49.621 100.992 0 130.133z");
+    changeIcon(player, '.jw-svg-icon-pause', '0 0 1024 1024', "M864.853 170.752v554.496c0 41.771-33.835 75.648-75.605 75.648h-151.211c-41.771 0-75.605-33.877-75.605-75.648v-554.496c0-41.771 33.835-75.648 75.605-75.648h151.211c41.771 0 75.648 33.877 75.648 75.648zM385.963 95.104h-151.211c-41.779 0-75.648 33.869-75.648 75.648v0 554.496c0 41.771 33.877 75.648 75.648 75.648h151.211c41.771 0 75.605-33.877 75.605-75.648v-554.496c0-41.771-33.835-75.648-75.605-75.648z");
+    changeIcon(player, '.jw-svg-icon-replay', '0 0 1024 1024', "M512.725 838.699c104.507-0.061 199.374-41.283 269.277-108.332l-0.136 0.129 56.32 56.277c23.765 23.808 64.512 6.955 64.512-26.752v-211.2c0-20.907-16.939-37.803-37.803-37.803h-211.2c-33.707 0-50.56 40.704-26.752 64.555l65.792 65.749c-46.521 43.828-109.251 70.901-178.302 71.338h-0.087c-145.579 1.28-268.245-116.565-267.008-266.923 1.195-142.677 116.864-262.4 264.661-262.4 0.234-0.001 0.511-0.001 0.787-0.001 66.636 0 127.477 24.81 173.789 65.697l-0.283-0.245c3.301 2.904 7.658 4.676 12.43 4.676 5.211 0 9.928-2.113 13.341-5.529l62.464-62.464c7.68-7.68 7.296-20.224-0.725-27.477-68.985-62.462-160.93-100.69-261.803-100.69-215.776 0-390.697 174.92-390.699 390.696v0c0 215.509 175.872 391.083 391.424 390.699z");
+    changeIcon(player, '.jw-svg-icon-settings', '0 0 1024 1024', "M637.867 448.768c-0.073 69.579-56.458 125.965-126.030 126.037h-0.007c-69.579-0.073-125.965-56.458-126.037-126.030v-0.007c0.073-69.579 56.458-125.965 126.030-126.037h0.007c69.579 0.073 125.965 56.458 126.037 126.030v0.007zM809.216 393.472l67.157-38.741c7.68-4.437 11.221-13.568 8.619-22.059-18.38-57.938-47.945-107.778-86.414-149.24l0.227 0.248c-3.47-3.735-8.409-6.065-13.892-6.065-3.477 0-6.735 0.937-9.536 2.572l0.090-0.048-67.115 38.741c-27.077-23.31-58.854-42.091-93.6-54.674l-2.102-0.665v-77.483c0-0.009 0-0.021 0-0.032 0-8.972-6.251-16.484-14.635-18.418l-0.127-0.025c-25.854-6.047-55.541-9.513-86.037-9.513s-60.183 3.466-88.687 10.027l2.65-0.513c-8.532 1.959-14.8 9.484-14.805 18.474v77.484c-36.864 13.242-68.656 32.024-96.141 55.672l0.397-0.334-67.072-38.741c-2.718-1.596-5.986-2.539-9.474-2.539-5.491 0-10.436 2.336-13.896 6.068l-0.011 0.012c-38.226 41.216-67.776 91.056-85.383 146.23l-0.761 2.762c-0.546 1.689-0.862 3.631-0.862 5.648 0 6.978 3.773 13.075 9.391 16.362l0.090 0.048 67.115 38.741c-3.217 16.626-5.057 35.746-5.057 55.296s1.84 38.67 5.357 57.197l-0.3-1.901-67.115 38.741c-5.707 3.335-9.48 9.432-9.48 16.411 0 2.016 0.315 3.959 0.899 5.782l-0.037-0.134c18.38 57.938 47.945 107.778 86.414 149.24l-0.227-0.248c3.47 3.735 8.409 6.065 13.892 6.065 3.477 0 6.735-0.937 9.536-2.572l-0.090 0.048 67.072-38.741c27.088 23.315 58.88 42.096 93.642 54.674l2.102 0.664v77.483c0 8.875 6.144 16.512 14.763 18.475 25.854 6.047 55.541 9.513 86.037 9.513s60.183-3.466 88.687-10.027l-2.65 0.513c8.532-1.959 14.8-9.484 14.805-18.474v-77.484c35.029-12.373 67.499-31.147 95.701-55.339l67.115 38.741c2.711 1.586 5.969 2.523 9.446 2.523 5.483 0 10.422-2.329 13.881-6.053l0.011-0.012c38.242-41.214 67.806-91.054 85.425-146.23l0.762-2.762c0.546-1.689 0.862-3.631 0.862-5.648 0-6.978-3.773-13.075-9.391-16.362l-0.090-0.048-67.157-38.741c3.217-16.626 5.057-35.746 5.057-55.296s-1.84-38.67-5.357-57.197l0.3 1.901z");
+    changeIcon(player, '.kvp-svg-icon-sharing', '0 0 24 24', "M16.726 14.363a3.53 3.53 0 0 0-2.207.772l-3.785-2.365a3.565 3.565 0 0 0 0-1.54l3.785-2.365a3.545 3.545 0 1 0-1.253-2.004L9.48 9.228a3.545 3.545 0 1 0 0 5.546l3.785 2.365a3.545 3.545 0 1 0 3.46-2.775z");
+    changeIcon(player, '.jw-svg-icon-fullscreen-on', '0 0 1024 1024', "M411.179 114.005v63.061c0 10.411-8.533 18.901-18.901 18.901h-132.352v132.352c0 10.411-8.533 18.901-18.901 18.901h-63.019c-10.368 0-18.901-8.533-18.901-18.901v-195.371c0-20.907 16.853-37.803 37.803-37.803h195.371c10.411 0 18.901 8.533 18.901 18.901zM845.952 347.221h-62.976c-10.411 0-18.901-8.533-18.901-18.901v-132.352h-132.352c-10.411 0-18.901-8.533-18.901-18.901v-63.019c0-10.368 8.533-18.901 18.901-18.901h195.371c0.025 0 0.055 0 0.085 0 20.831 0 37.717 16.887 37.717 37.717 0 0.030 0 0.060 0 0.090v-0.005 195.371c0 10.411-8.533 18.901-18.901 18.901zM612.821 781.995v-62.976c0-10.411 8.533-18.901 18.901-18.901h132.352v-132.352c0-10.411 8.533-18.901 18.901-18.901h63.019c10.368 0 18.901 8.533 18.901 18.901v195.328c0 0.025 0 0.055 0 0.085 0 20.831-16.887 37.717-37.717 37.717-0.030 0-0.060 0-0.090 0h-195.366c-10.411 0-18.901-8.533-18.901-18.901zM159.147 567.723v195.371c0 20.907 16.853 37.803 37.803 37.803h195.371c10.411 0 18.901-8.533 18.901-18.901v-63.061c0-10.411-8.533-18.901-18.901-18.901h-132.395v-132.352c0-10.411-8.533-18.901-18.901-18.901h-63.019c-10.429 0.024-18.877 8.472-18.901 18.899v0.002z");
+    changeIcon(player, '.jw-svg-icon-fullscreen-off', '0 0 1024 1024', "M713.643 114.005v132.352h132.352c10.368 0 18.901 8.533 18.901 18.901v63.019c0 10.411-8.533 18.901-18.901 18.901h-195.371c-0.025 0-0.055 0-0.085 0-20.831 0-37.717-16.887-37.717-37.717 0-0.030 0-0.060 0-0.090v0.005-195.371c0-10.368 8.533-18.901 18.901-18.901h63.019c10.411 0 18.901 8.533 18.901 18.901zM411.136 114.005v195.371c0 0.025 0 0.055 0 0.085 0 20.831-16.887 37.717-37.717 37.717-0.015 0-0.030 0-0.045 0h-195.368c-10.368 0-18.901-8.533-18.901-18.901v-63.019c0-10.411 8.533-18.901 18.901-18.901h132.352v-132.352c0-10.368 8.533-18.901 18.901-18.901h63.019c10.411 0 18.901 8.533 18.901 18.901zM411.179 586.624v195.371c0 10.368-8.533 18.901-18.901 18.901h-63.019c-10.411 0-18.901-8.533-18.901-18.901v-132.352h-132.352c-10.368 0-18.901-8.533-18.901-18.901v-63.019c0-10.411 8.533-18.901 18.901-18.901h195.371c0.025 0 0.055 0 0.085 0 20.831 0 37.717 16.887 37.717 37.717 0 0.030 0 0.060 0 0.090v-0.005zM845.952 548.821h-195.285c-0.025 0-0.055 0-0.085 0-20.831 0-37.717 16.887-37.717 37.717 0 0.030 0 0.060 0 0.090v-0.005 195.371c0 10.368 8.533 18.901 18.901 18.901h63.019c10.411 0 18.901-8.533 18.901-18.901v-132.352h132.352c10.368 0 18.901-8.533 18.901-18.901v-63.019c0-10.411-8.533-18.901-18.901-18.901z");
+    changeIcon(player, '.kvp-svg-icon-theatre-on', '0 0 1024 1024', "M940.501 195.925h-857.003c-41.761 0.024-75.605 33.884-75.605 75.648v0 352.853c0 41.771 33.835 75.648 75.605 75.648h857.003c41.771 0 75.605-33.877 75.605-75.648v-352.853c0-41.771-33.835-75.648-75.605-75.648z");
+    changeIcon(player, '.kvp-svg-icon-theatre-off', '0 0 1024 1024', "M839.68 145.493h-655.36c-41.761 0.024-75.605 33.884-75.605 75.648v0 453.717c0 41.728 33.877 75.605 75.605 75.605h655.36c41.728 0 75.605-33.877 75.605-75.605v-453.717c0-41.728-33.877-75.605-75.605-75.605z");
+    changeIcon(player, '.jw-svg-icon-volume-0', '0 0 1024 1024', "M785.707 448l71.893 71.936c4.603 4.602 7.451 10.961 7.451 17.984s-2.847 13.382-7.451 17.984l-35.925 35.925c-4.602 4.603-10.961 7.451-17.984 7.451s-13.382-2.847-17.984-7.451l-71.893-71.893-71.893 71.893c-4.602 4.603-10.961 7.451-17.984 7.451s-13.382-2.847-17.984-7.451l-35.925-35.925c-4.603-4.602-7.451-10.961-7.451-17.984s2.847-13.382 7.451-17.984l71.893-71.893-71.893-71.893c-4.591-4.6-7.43-10.95-7.43-17.963s2.839-13.363 7.43-17.963v0l35.968-35.968c9.899-9.941 26.027-9.941 35.925 0l71.893 71.893 71.893-71.893c9.941-9.941 26.027-9.941 35.968 0l35.925 35.925c4.603 4.602 7.451 10.961 7.451 17.984s-2.847 13.382-7.451 17.984l-71.893 71.851zM397.227 739.413l-140.16-140.117h-160.811c-20.878 0-37.803-16.925-37.803-37.803 0-0.015 0-0.030 0-0.045v0.002-226.859c0-20.864 16.939-37.803 37.803-37.803h160.811l140.16-140.117c23.68-23.68 64.512-7.040 64.512 26.752v529.237c0 33.835-40.875 50.389-64.512 26.752z");
+    changeIcon(player, '.jw-svg-icon-volume-50', '0 0 1024 1024', "M591.317 569.941c-4.956 2.55-10.815 4.045-17.023 4.045-20.901 0-37.845-16.944-37.845-37.845 0-13.716 7.297-25.728 18.22-32.366l0.168-0.095c20.309-11.221 32.939-32.213 32.939-54.869s-12.629-43.691-32.939-54.869c-11.091-6.732-18.388-18.744-18.388-32.461 0-20.901 16.944-37.845 37.845-37.845 6.208 0 12.067 1.495 17.236 4.144l-0.213-0.099c43.175 23.934 71.952 69.175 72.107 121.152v0.022c-0.194 51.951-28.962 97.139-71.398 120.685l-0.709 0.361zM397.184 740.181l-140.075-140.16h-160.853c-20.863 0-37.778-16.901-37.803-37.758v-226.861c0-20.864 16.939-37.803 37.803-37.803h160.811l140.16-140.117c23.68-23.68 64.512-7.040 64.512 26.709v529.237c0 33.835-40.875 50.347-64.512 26.752z");
+    changeIcon(player, '.jw-svg-icon-volume-100', '0 0 1024 1024', "M591.147 569.899c-4.956 2.55-10.815 4.045-17.023 4.045-20.901 0-37.845-16.944-37.845-37.845 0-13.716 7.297-25.728 18.22-32.366l0.168-0.095c20.309-11.179 32.939-32.213 32.939-54.869 0-22.613-12.629-43.648-32.939-54.827-11.091-6.732-18.388-18.744-18.388-32.461 0-20.901 16.944-37.845 37.845-37.845 6.208 0 12.067 1.495 17.236 4.144l-0.213-0.099c43.163 23.927 71.936 69.149 72.107 121.107v0.024c-0.168 51.97-28.944 97.181-71.398 120.727l-0.709 0.361zM814.464 448.768c0 0.158 0 0.345 0 0.532 0 102.856-53.389 193.243-133.967 244.959l-1.158 0.696c-5.732 3.714-12.74 5.921-20.263 5.921-13.397 0-25.159-7-31.827-17.543l-0.091-0.155c-3.687-5.778-5.876-12.822-5.876-20.378 0-13.445 6.933-25.271 17.419-32.097l0.148-0.090c60.491-38.729 100.011-105.581 100.011-181.664 0-0.064 0-0.127 0-0.191v0.010c0-0.041 0-0.090 0-0.138 0-76.083-39.52-142.935-99.151-181.149l-0.859-0.515c-10.634-6.917-17.567-18.742-17.567-32.188 0-7.556 2.189-14.6 5.968-20.533l-0.092 0.155c10.24-16.341 33.28-23.893 52.181-11.776 81.736 52.412 135.126 142.798 135.126 245.654 0 0.187 0 0.374-0.001 0.562v-0.029zM764.587 820.565c-5.89 3.914-13.126 6.245-20.907 6.245-21.051 0-38.117-17.066-38.117-38.117 0-13.271 6.782-24.958 17.069-31.784l0.141-0.088c100.982-66.619 166.699-179.562 166.699-307.854 0-0.085 0-0.171 0-0.256v0.013c0-0.085 0-0.185 0-0.285 0-128.292-65.717-241.234-165.324-307.001l-1.375-0.853c-10.608-6.882-17.527-18.668-17.527-32.069 0-21.043 17.059-38.101 38.101-38.101 7.921 0 15.278 2.417 21.372 6.554l-0.133-0.085c121.843 80.421 201.131 216.722 201.131 371.542 0 0.105 0 0.21 0 0.314v-0.016c0 0.101 0 0.221 0 0.341 0 154.82-79.288 291.121-199.473 370.513l-1.658 1.029zM397.056 740.139l-140.16-140.117h-160.811c-20.878 0-37.803-16.925-37.803-37.803v0-226.859c0-20.907 16.939-37.803 37.803-37.803h160.811l140.16-140.16c23.68-23.68 64.512-7.040 64.512 26.752v529.237c0 33.792-40.875 50.347-64.512 26.709z");
 });
