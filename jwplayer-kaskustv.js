@@ -24,7 +24,7 @@ function addTheatreButton(player) {
     const playerContainer = player.getContainer();
 
     const theatreIcon = '<svg xmlns="http://www.w3.org/2000/svg" class="jw-svg-icon kvp-svg-icon-theatre-on" focusable="false"><path></path></svg>';
-    
+
     player.addButton(theatreIcon, 'Theatre', () => {
         const playerClassList = playerContainer.classList;
         const tooltipText = playerContainer.querySelector('.jw-tooltip-theatre div');
@@ -114,6 +114,22 @@ function moveSettingsMenu(player) {
     settingsIcon.appendChild(menuSettings);
 }
 
+function moveLogo(player) {
+    const playerContainer = player.getContainer();
+
+    const newDiv = document.createElement('div');
+    newDiv.className = 'jw-reset kvp-wrapper';
+
+    const logo = playerContainer.querySelector('.jw-logo-button');
+    if (logo) {
+        newDiv.appendChild(logo);
+    }
+
+    newDiv.appendChild(playerContainer.querySelector('.jw-button-container'));
+
+    playerContainer.querySelector('.jw-controlbar').appendChild(newDiv);
+}
+
 function changeIcon(player, svgSelectors, viewBox, d) {
     player.getContainer().querySelectorAll(svgSelectors).forEach(svg => {
         svg.setAttribute('viewBox', viewBox);
@@ -130,6 +146,7 @@ jwplayer().on('ready', function () {
     wrapTitleInAnchor(player);
     addProgressTimeTooltip(player);
     moveSettingsMenu(player);
+    moveLogo(player);
 
     changeIcon(player, '.jw-svg-icon-play', '0 0 1024 1024', "M827.733 513.877l-554.539 327.808c-45.056 26.624-114.048 0.811-114.048-65.024v-655.531c0-59.093 64.128-94.72 114.048-65.067l554.539 327.68c49.493 29.141 49.621 100.992 0 130.133z");
     changeIcon(player, '.jw-svg-icon-pause', '0 0 1024 1024', "M864.853 170.752v554.496c0 41.771-33.835 75.648-75.605 75.648h-151.211c-41.771 0-75.605-33.877-75.605-75.648v-554.496c0-41.771 33.835-75.648 75.605-75.648h151.211c41.771 0 75.648 33.877 75.648 75.648zM385.963 95.104h-151.211c-41.779 0-75.648 33.869-75.648 75.648v0 554.496c0 41.771 33.877 75.648 75.648 75.648h151.211c41.771 0 75.605-33.877 75.605-75.648v-554.496c0-41.771-33.835-75.648-75.605-75.648z");

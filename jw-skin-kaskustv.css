@@ -210,3 +210,24 @@
   -ms-user-select: none;
   user-select: none;
 }
+
+.jwplayer .jw-logo-button {
+  height: 48px;
+  width: 96px;
+}
+
+.jwplayer .jw-controlbar .jw-button-image {
+  max-height: 48px;
+  height: 48px;
+  width: 96px;
+}
+
+.kvp-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0;
+}
